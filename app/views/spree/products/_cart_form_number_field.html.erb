@@ -1,6 +1,11 @@
 <% if @product.subscribable? %>
   <%= hidden_field_tag (@product.has_variants? ? :quantity : "variants[#{@product.master.id}]"),
-              1, :class => 'title' %>
+              1, :class => 'title' %><br />
+   <div id="product-recurr-period">
+          <h6 class="product-section-title"><%= label_tag :recurring_period %></h6>
+          <div><span class="price selling" itemprop="price"> <%= text_field_tag :duration , '1',:size => 3%> </span></div>
+          <%= select_tag :interval, options_for_select(['Month','Year','Week','TriAnnual']) %>
+    </div>
 <% else %>
   <%= number_field_tag (@product.has_variants? ? :quantity : "variants[#{@product.master.id}]"),
               1, :class => 'title', :in => 1..@product.on_hand %>

@@ -11,6 +11,10 @@ module Spree
 
     scope :subscribable, where(:subscribable => true)
     scope :unsubscribable, where(:subscribable => false)
-    
+
+    def on_hand
+      variants_including_master.count
+    end
+
   end
 end

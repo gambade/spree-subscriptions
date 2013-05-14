@@ -1,6 +1,7 @@
 /*
- *= require admin/spree_core
+ require admin/spree_admin
 */
+
 
 .magazine_issue {
   width: 600px;
@@ -8,7 +9,7 @@
   display: inline;
 
 }
-
+`
 .magazine_issue img {
   margin-right: 20px;
   float: left;
