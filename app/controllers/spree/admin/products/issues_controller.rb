@@ -74,6 +74,10 @@ module Spree
         def load_products
           @products = Product.unsubscribable.map { |product| [product.name, product.id] }
         end
+
+        def issue_params
+          params.require(:issue).permit(:name, :published_at, :shipped_at, :magazine, :magazine_issue_id, :shipped_issue=>[:subscription, :issue])
+        end
       end
     end
   end
