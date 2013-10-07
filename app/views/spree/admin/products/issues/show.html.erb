@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="toolbar" data-hook="admin_issue_show_buttons">
-  <%= button_link_to t(:ship), admin_magazine_issue_ship_path(@product, @issue), :icon => 'accept', :confirm => t(:are_you_sure) if !@issue.shipped? %>
+  <%= button_link_to t(:ship), admin_magazine_issue_path(@product, @issue), :icon => 'accept', :confirm => t(:are_you_sure) if !@issue.shipped? %>
   <%= button_link_to t(:print), admin_magazine_issue_path(@product, @issue, :format => :pdf), :icon => 'pdf' %>
 </div>
 <br class="clear">

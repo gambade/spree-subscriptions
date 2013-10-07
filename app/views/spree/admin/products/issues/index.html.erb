@@ -27,7 +27,7 @@
         <td><%= link_to issue.name, admin_magazine_issue_url(@magazine, issue) %></td>
         <td><%= issue.shipped? ? issue.shipped_at.to_s(:db) : t(:issue_not_shipped) %></td>
         <td class="actions" data-hook="admin_issues_index_row_actions">
-          <%= link_to_with_icon :accept, t(:ship).capitalize, admin_magazine_issue_ship_path(@magazine, issue), :confirm => t(:are_you_sure) if !issue.shipped? %>
+          <%= link_to_with_icon :accept, t(:ship).capitalize, admin_magazine_issue_path(@magazine, issue), :confirm => t(:are_you_sure) if !issue.shipped? %>
           <%= link_to_with_icon :edit,  t(:edit), edit_admin_magazine_issue_url(@magazine, issue), :class => 'edit' if !issue.shipped? %>
         </td>
       </tr>

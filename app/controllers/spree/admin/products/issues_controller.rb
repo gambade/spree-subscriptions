@@ -37,11 +37,13 @@ module Spree
         end
 
         def new
-          @issue = @magazine.issues.build
+          @issue = @magazine.issues.build()
         end
 
-        def create          
-          if (new_issue = @magazine.issues.create(params[:issue]))
+        def create
+          puts @magazine.inspect
+          new_issue = @magazine.issues.create(issue_params)
+          if (new_issue)
             flash[:notice] = t('issue_created')
             redirect_to admin_magazine_issue_path(@magazine, new_issue)
           else
@@ -76,7 +78,7 @@ module Spree
         end
 
         def issue_params
-          params.require(:issue).permit(:name, :published_at, :shipped_at, :magazine, :magazine_issue_id, :shipped_issue=>[:subscription, :issue])
+          params.require(:issue).permit(:name, :published_at, :shipped_at, :magazine, :magazine_issue_id, shipped_issues_attributes: [:subscription, :issue])
         end
       end
     end
